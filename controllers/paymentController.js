@@ -61,8 +61,8 @@ export const createCheckoutSession = async (req, res) => {
       payment_method_types: ["card"],
       line_items,
       mode: "payment",
-      success_url: "http://localhost:5173/success",
-      cancel_url: "http://localhost:5173/cancel",
+      success_url: "https://fsp-frontend-eight.vercel.app/success",
+      cancel_url: "https://fsp-frontend-eight.vercel.app/failed",
 
       // ✅ ONLY ADDITION (no logic change)
       metadata: {

@@ -11,11 +11,13 @@ dotenv.config()
 const app=express();
 app.use("/api/payment/webhook", express.raw({ type: "application/json" }));
 app.use (express.json());
-app.use(cors({
-    origin: "http://localhost:5173", // React app URL
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: "https://fsp-frontend-eight.vercel.app", // React app URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  }),
+);
 
 
 //mongoDb connect

@@ -86,7 +86,7 @@ export const forgotPw=async (req, res) => {
   user.resetToken = token;
   user.resetTokenExpiry = Date.now() + 15 * 60 * 1000; 
   await user.save();
-const link = `http://localhost:5173/reset-password/${token}`;
+const link = `https://fsp-frontend-eight.vercel.app/reset-password/${token}`;
 const html = `<a href="${link}">Click here</a>`;
 
   await sendEmail(email,"reset password", html);
