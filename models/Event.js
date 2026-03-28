@@ -37,11 +37,11 @@ const eventSchema = new mongoose.Schema(
       required: true,
     },
 
-    // ✅ Ticket Types
+   
     ticketTypes: [
       {
         ticketName: {
-          type: String, // Example: General, VIP
+          type: String,
           required: true,
         },
 

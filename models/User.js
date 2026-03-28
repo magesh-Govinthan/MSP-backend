@@ -26,7 +26,9 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: ["user","admin", "organizer"],
       required: true
-    }
+    },
+    resetToken: String,
+  resetTokenExpiry: Date,
   },
   { timestamps: true });
 

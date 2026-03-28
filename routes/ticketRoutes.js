@@ -1,15 +1,17 @@
 import express from "express";
-// import {
-//   authMiddleware,
-// } from "../middleware/authMiddleware.js";
 
 import {
   bookTicket,
   getMyTickets,
   cancelTicket,
+  transferTicket,
+  getTicketsByEventId,
+  getAllTickets,
+  deleteTicket
 } from "../controllers/ticketController.js";
 import { authMiddleware } from "../middleware/authMiddleware.js";
 import { allowRolesMiddleware } from "../middleware/adminMiddleware.js";
+
 
 const router = express.Router();
 
@@ -21,12 +23,17 @@ router.post("/book",
 
 // GET USER TICKETS
 router.get(
-  "/mytickets",
+  "/mytickets/:user",
   // authMiddleware,
   // roleMiddleware("customer"),
   getMyTickets,
 );
-
+router.get(
+  "/allTickets",
+  authMiddleware,
+  allowRolesMiddleware("admin"),
+  getAllTickets
+);
 // CANCEL TICKET
 router.put(
   "/cancel/:id",
@@ -34,5 +41,24 @@ router.put(
   // roleMiddleware("customer"),
   cancelTicket,
 );
+// get all tickets for organizer and admin
+router.post(
+  "/eventIds",
+  authMiddleware,
+  allowRolesMiddleware("admin", "organizer"),
+  getTicketsByEventId
+);
+router.put(
+  "/transfer",
+  // authMiddleware,
+  // roleMiddleware("customer"),
+  transferTicket,
+);
 
+router.delete(
+  "/:id",
+  // authMiddleware,
+  // roleMiddleware("customer"),
+  deleteTicket,
+);
 export default router;

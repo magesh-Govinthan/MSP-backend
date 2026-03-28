@@ -29,11 +29,20 @@ export const register = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find().select("-password"); // hide password
+    res.status(200).json(users);
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
 // LOGIN
 export const login = async (req, res) => {
+  console.log(req.query);
   try {
-    const { email, password } = req.body;
+    const { email, password } = req.query;
 
     const user = await User.findOne({ email });
 
@@ -73,27 +82,27 @@ export const forgotPw=async (req, res) => {
   if (!user) return res.status(400).json({ message: "User not found" });
 
   const token = crypto.randomBytes(32).toString("hex");
- 
+  console.log(token);
   user.resetToken = token;
   user.resetTokenExpiry = Date.now() + 15 * 60 * 1000; 
   await user.save();
-const link = `http://localhost:5173/${token}`;
+const link = `http://localhost:5173/reset-password/${token}`;
 const html = `<a href="${link}">Click here</a>`;
 
   await sendEmail(email,"reset password", html);
 
-  res.json({ message: "Reset link sent to email" });
+  res.json({ message: "Reset link sent to email", token });
 };
 
 //RESET PASSWORD
 export const resetPw= async (req, res) => {
+  console.log(req.body);
   const { password } = req.body;
-
+  console.log(req.params.token);
   const user = await User.findOne({
     resetToken: req.params.token,
-    resetTokenExpiry: { $gt: Date.now() },
   });
-
+  console.log('Token expiry:', user, 'Now:', Date.now());
   if (!user) return res.status(400).json({ message: "Token invalid or expired" });
 
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -106,3 +115,35 @@ export const resetPw= async (req, res) => {
 
   res.json({ message: "Password updated successfully" });
 }
+
+
+// UPDATE USER
+export const updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, email, phone, role } = req.body;
+
+    const user = await User.findById(id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Update fields if provided
+    user.name = name || user.name;
+    user.email = email || user.email;
+    user.phone = phone || user.phone;
+    user.role = role || user.role;
+
+    await user.save();
+
+    res.json({
+      message: "User updated successfully",
+      user,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+

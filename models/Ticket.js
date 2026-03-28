@@ -1,5 +1,11 @@
 import mongoose from "mongoose";
 
+const transferSchema = new mongoose.Schema({
+  recipientEmail: { type: String, required: true },
+  transferredAt: { type: Date, default: Date.now },
+  claimed: { type: Boolean, default: false },
+});
+
 const ticketSchema = new mongoose.Schema(
   {
     event: {
@@ -15,7 +21,7 @@ const ticketSchema = new mongoose.Schema(
     },
 
     ticketType: {
-      type: String, // Example: General, VIP
+      type: String, 
       required: true,
     },
 
@@ -37,9 +43,15 @@ const ticketSchema = new mongoose.Schema(
 
     bookingStatus: {
       type: String,
-      enum: ["booked", "cancelled"],
+      enum: ["booked", "cancelled", "transferred"],
       default: "booked",
     },
+    paymentStatus: {
+      type: String,
+      enum: ["pending", "paid", "failed"],
+      default: "pending"
+    },
+    transfer: transferSchema,
   },
   { timestamps: true },
 );

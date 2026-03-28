@@ -11,6 +11,7 @@ import {
   deleteEvent,
   approveEvent,
   rejectEvent,
+  ReminderNotificationForUser,
 } from "../controllers/eventController.js";
 
 const router = express.Router();
@@ -24,7 +25,7 @@ router.post("/create", authMiddleware,  allowRolesMiddleware("admin", "organizer
 
 router.put("/update/:id", authMiddleware, allowRolesMiddleware("admin", "organizer") , updateEvent);
 router.delete(
-  "/delete:id",
+  "/delete/:id",
   authMiddleware,
   allowRolesMiddleware("admin", "organizer") ,
   deleteEvent,
@@ -37,6 +38,11 @@ router.put(
   allowRolesMiddleware("admin"),
   approveEvent,
 );
+
+router.post("/notify-event", 
+  authMiddleware, 
+  allowRolesMiddleware("admin", "organizer"),
+   ReminderNotificationForUser);
 
 router.put("/reject/:id", authMiddleware, allowRolesMiddleware("admin"), rejectEvent);
 
