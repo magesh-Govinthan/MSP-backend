@@ -34,7 +34,7 @@ export const getReviews = async (req, res) => {
   }
 };
 
-// ➤ Delete Review (optional)
+// Delete Review (optional)
 export const deleteReview = async (req, res) => {
   try {
     await Review.findByIdAndDelete(req.params.id);

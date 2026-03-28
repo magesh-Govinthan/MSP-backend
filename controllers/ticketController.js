@@ -96,7 +96,7 @@ export const bookTicket = async (req, res) => {
 
 // GET MY TICKETS (Customer)
 export const getMyTickets = async (req, res) => {
-  console.log(req);
+ 
   try {
     const tickets = await Ticket.find({
       user: req.params.user,
@@ -150,7 +150,7 @@ export const cancelTicket = async (req, res) => {
 
     // 2️⃣ Increase event available tickets
     const event = await Event.findById(ticket.event._id);
-    console.log(event);
+   
     if (event) {
       if (ticket.ticketType === "General") {
         event.ticketTypes[0].availableTickets += ticket.quantity;
@@ -158,7 +158,7 @@ export const cancelTicket = async (req, res) => {
         event.ticketTypes[1].availableTickets += ticket.quantity;
       }
     }
-    console.log('after updation',event)
+   
     res.json({ message: "Ticket cancelled and quantity restored" });
     await event.save();
   } catch (error) {

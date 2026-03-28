@@ -6,7 +6,7 @@ import { sendEmail } from "../Utils/sendEmail.js";
 
 // REGISTER
 export const register = async (req, res) => {
-  console.log(req);
+ 
   try {
     const { name, email, password, role, phone } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -18,7 +18,7 @@ export const register = async (req, res) => {
       role,
       phone
     });
-  console.log(user,"user:");
+ 
   
    await user.save()
     res.status(201).json({
@@ -40,7 +40,7 @@ export const getAllUsers = async (req, res) => {
 };
 // LOGIN
 export const login = async (req, res) => {
-  console.log(req.query);
+ 
   try {
     const { email, password } = req.query;
 
@@ -78,11 +78,11 @@ export const forgotPw=async (req, res) => {
   const { email } = req.body;
 
   const user = await User.findOne({ email });
-  console.log('the user is ', user);
+  
   if (!user) return res.status(400).json({ message: "User not found" });
 
   const token = crypto.randomBytes(32).toString("hex");
-  console.log(token);
+ 
   user.resetToken = token;
   user.resetTokenExpiry = Date.now() + 15 * 60 * 1000; 
   await user.save();
@@ -96,13 +96,13 @@ const html = `<a href="${link}">Click here</a>`;
 
 //RESET PASSWORD
 export const resetPw= async (req, res) => {
-  console.log(req.body);
+ 
   const { password } = req.body;
-  console.log(req.params.token);
+
   const user = await User.findOne({
     resetToken: req.params.token,
   });
-  console.log('Token expiry:', user, 'Now:', Date.now());
+
   if (!user) return res.status(400).json({ message: "Token invalid or expired" });
 
   const hashedPassword = await bcrypt.hash(password, 10);

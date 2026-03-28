@@ -6,7 +6,7 @@ import Payment from "../models/Payment.js";
 // ORGANIZER CREATE EVENT
 export const createEvent = async (req, res) => {
 
-  console.log('the value is',req.user);
+ 
   
   try {
     let status;
@@ -42,7 +42,7 @@ export const getAllEvents = async (req, res) => {
 
 // GET SINGLE EVENT
 export const getEventById = async (req, res) => {
-  console.log(req.params)
+
   try {
     const events = await Event.find({
       organizer: req.params.id,
