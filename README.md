@@ -67,44 +67,47 @@ The backend handles event management, ticket booking, payment processing, user a
 
 ---
 
-# 📂 Project Structure
+## 📂 Backend Project Structure
 
-``
+```
 MSP-BACKEND
 │
 ├── controllers
-│   ├── eventController.js        
-│   ├── paymentController.js      
-│   ├── reviewController.js       
-│   ├── ticketController.js       
-│   └── userController.js         
+│   ├── eventController.js
+│   ├── paymentController.js
+│   ├── reviewController.js
+│   ├── ticketController.js
+│   └── userController.js
 │
 ├── middleware
-│   ├── adminMiddleware.js        
-│   └── authMiddleware.js         
+│   ├── adminMiddleware.js
+│   └── authMiddleware.js
 │
 ├── models
-│   ├── Event.js                  
-│   ├── Payment.js                
-│   ├── Review.js               
-│   ├── Ticket.js                 
-│   └── User.js                   
+│   ├── Event.js
+│   ├── Payment.js
+│   ├── Review.js
+│   ├── Ticket.js
+│   └── User.js
 │
 ├── routes
-│   ├── eventRoutes.js            
-│   ├── paymentRoutes.js       
-│   ├── reviewRoutes.js           
-│   ├── ticketRoutes.js           
-│   └── userRoutes.js            
+│   ├── eventRoutes.js
+│   ├── paymentRoutes.js
+│   ├── reviewRoutes.js
+│   ├── ticketRoutes.js
+│   └── userRoutes.js
 │
 ├── Utils
-│   └── sendEmail.js             
+│   └── sendEmail.js
 │
-├── .env                       
+├── .env
 ├── .gitignore
-├── index.js                     
-├── package.json                  
-└── package-lock.json            
+├── index.js
+├── package.json
+└── package-lock.json
+```
+
+          
 ```
 
 ---
