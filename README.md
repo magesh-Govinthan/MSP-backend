@@ -69,10 +69,7 @@ The backend handles event management, ticket booking, payment processing, user a
 
 # 📂 Project Structure
 
-```
-## 📂 Backend Project Structure
-
-```
+``
 MSP-BACKEND
 │
 ├── controllers
