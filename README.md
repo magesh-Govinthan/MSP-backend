@@ -70,14 +70,12 @@ The backend handles event management, ticket booking, payment processing, user a
 # 📂 Project Structure
 
 ```
-backend
 ## 📂 Backend Project Structure
 
 ```
 MSP-BACKEND
 │
 ├── controllers
-
 │   ├── eventController.js        
 │   ├── paymentController.js      
 │   ├── reviewController.js       
@@ -85,12 +83,10 @@ MSP-BACKEND
 │   └── userController.js         
 │
 ├── middleware
-
 │   ├── adminMiddleware.js        
 │   └── authMiddleware.js         
 │
 ├── models
-
 │   ├── Event.js                  
 │   ├── Payment.js                
 │   ├── Review.js               
@@ -105,7 +101,6 @@ MSP-BACKEND
 │   └── userRoutes.js            
 │
 ├── Utils
-
 │   └── sendEmail.js             
 │
 ├── .env                       
