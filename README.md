@@ -77,38 +77,38 @@ backend
 MSP-BACKEND
 │
 ├── controllers
-│   ├── eventController.js        # Handles event creation, update, deletion, and retrieval
-│   ├── paymentController.js      # Manages payment processing and transactions
-│   ├── reviewController.js       # Handles user reviews and ratings for events
-│   ├── ticketController.js       # Manages ticket booking and ticket details
-│   └── userController.js         # Handles user registration, login, and profile management
+│   ├── eventController.js        
+│   ├── paymentController.js      
+│   ├── reviewController.js       
+│   ├── ticketController.js       
+│   └── userController.js         
 │
 ├── middleware
-│   ├── adminMiddleware.js        # Middleware for admin authorization
-│   └── authMiddleware.js         # Middleware for JWT authentication
+│   ├── adminMiddleware.js        
+│   └── authMiddleware.js         
 │
 ├── models
-│   ├── Event.js                  # Event schema
-│   ├── Payment.js                # Payment schema
-│   ├── Review.js                 # Review schema
-│   ├── Ticket.js                 # Ticket schema
-│   └── User.js                   # User schema
+│   ├── Event.js                  
+│   ├── Payment.js                
+│   ├── Review.js               
+│   ├── Ticket.js                 
+│   └── User.js                   
 │
 ├── routes
-│   ├── eventRoutes.js            # Routes for event APIs
-│   ├── paymentRoutes.js          # Routes for payment APIs
-│   ├── reviewRoutes.js           # Routes for review APIs
-│   ├── ticketRoutes.js           # Routes for ticket APIs
-│   └── userRoutes.js             # Routes for user APIs
+│   ├── eventRoutes.js            
+│   ├── paymentRoutes.js       
+│   ├── reviewRoutes.js           
+│   ├── ticketRoutes.js           
+│   └── userRoutes.js            
 │
 ├── Utils
-│   └── sendEmail.js              # Utility for sending email notifications
+│   └── sendEmail.js             
 │
-├── .env                          # Environment variables
-├── .gitignore                    # Git ignored files
-├── index.js                      # Main server entry point
-├── package.json                  # Project dependencies
-└── package-lock.json             # Dependency lock file
+├── .env                       
+├── .gitignore
+├── index.js                     
+├── package.json                  
+└── package-lock.json            
 ```
 
 ---
