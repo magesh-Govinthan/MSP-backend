@@ -77,6 +77,7 @@ backend
 MSP-BACKEND
 │
 ├── controllers
+
 │   ├── eventController.js        
 │   ├── paymentController.js      
 │   ├── reviewController.js       
@@ -84,10 +85,12 @@ MSP-BACKEND
 │   └── userController.js         
 │
 ├── middleware
+
 │   ├── adminMiddleware.js        
 │   └── authMiddleware.js         
 │
 ├── models
+
 │   ├── Event.js                  
 │   ├── Payment.js                
 │   ├── Review.js               
@@ -102,6 +105,7 @@ MSP-BACKEND
 │   └── userRoutes.js            
 │
 ├── Utils
+
 │   └── sendEmail.js             
 │
 ├── .env                       
